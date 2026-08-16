@@ -13,17 +13,18 @@ BITS ID: 2025AC05530
 **Kaggle URL:** https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset
 **Original source:** UCI Machine Learning Repository — Taiwan, 2005
 
-**Shape:** [rows] × [columns]        ← from df.shape, Cell 2
-**Features used:** [n] (after dropping ID)
-**Target variable:** `[exact name]`  ← confirm by scrolling right
+**Shape:** 30000 × 25     
+**Features used:** 23
+**Target variable:** `default_payment_next_month`  
 **Task type:** Binary classification
+
 
 **Classes:**
 | Value | Meaning | Count | % |
 |---|---|---|---|
-| 0 | No default next month | [ ] | [ ] |
-| 1 | Defaulted next month | [ ] | [ ] |
-                                     ← from value_counts(), Cell 5
+| 0 | No default next month | 23364 | 77.88% |
+| 1 | Defaulted next month | 6636 | 22.12% |
+                                    
 
 **Feature groups:**
 | Group | Columns | Description |
@@ -36,14 +37,9 @@ BITS ID: 2025AC05530
 Note: the repayment columns are labelled PAY_0, PAY_2…PAY_6 — there is no PAY_1
 in the original dataset. Retained as-is rather than renamed.
 
-**Missing values:** [state what isnull().sum() shows, Cell 4]
+**Missing values:** None
 
 **Data quality observations:**
-- EDUCATION is documented as 1–4 but the file also contains values [list what you find].
-  Handling: [your decision]
-- MARRIAGE is documented as 1–3 but also contains [list what you find].
-  Handling: [your decision]
-- LIMIT_BAL appears partly in scientific notation in the raw CSV; read as float64.
 
 **Preprocessing applied:**
 - Dropped `ID` — a row identifier with no predictive value
@@ -55,3 +51,28 @@ in the original dataset. Retained as-is rather than renamed.
 - 80/20 stratified train-test split, random_state=42 for reproducibility
 
 **Why this dataset was chosen:**
+
+## c.GitHub Repository Link
+https://github.com/2025ac05530-lab/ML-assignment-2
+
+## d. Models Used
+
+| ML Model | Accuracy | AUC | Precision | Recall | F1 | MCC |
+|---|---|---|---|---|---|---|
+| Logistic Regression | 0.8090 | 0.7099 | 0.6938 | 0.2442 | 0.3612 | 0.3308 |
+| Decision Tree | 0.8173 | 0.7418 | 0.6629 | 0.3542 | 0.4617 | 0.3896 |
+| kNN | 0.7928 | 0.7021 | 0.5499 | 0.3489 | 0.4269 | 0.3200 |
+| Naive Bayes | 0.6665 | 0.7239 | 0.3619 | 0.6654 | 0.4688 | 0.2807 |
+| Random Forest | 0.8150 | 0.7549 | 0.6437 | 0.3662 | 0.4669 | 0.3863 |
+
+
+## e. Observations
+
+| ML Model | Observation about model performance |
+|---|---|
+| Logistic Regression | |
+| Decision Tree | |
+| kNN | |
+| Naive Bayes | |
+| Random Forest | |
+| **Overall Winner** | |
