@@ -37,3 +37,44 @@ model = joblib.load(MODEL_FILES[selected_model_name])
 feature_columns = joblib.load('model/saved_models/feature_columns.pkl')
 
 st.sidebar.write("Currently loaded:", selected_model_name)
+
+uploaded_file = st.file_uploader("Upload test data (CSV)", type=['csv'])
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.success(f"Loaded {df.shape[0]} rows and {df.shape[1]} columns")
+    st.subheader("Data Preview")
+    st.dataframe(df.head())
+    TARGET = 'default_payment_next_month'
+
+    if TARGET not in df.columns:
+        st.error(f"Uploaded file must contain the column '{TARGET}'")
+        st.stop()
+
+    y_true = df[TARGET]
+    X = df.drop(columns=[TARGET])
+    X = X[feature_columns]
+    y_pred = model.predict(X)
+    y_proba = model.predict_proba(X)[:, 1]
+    acc = accuracy_score(y_true, y_pred)
+    auc = roc_auc_score(y_true, y_proba)
+    prec = precision_score(y_true, y_pred)
+    recall=recall_score(y_true, y_pred)
+    mcc =matthews_corrcoef(y_true, y_pred)
+    fc= f1_score(y_true, y_pred)
+    st.subheader("Evaluation Metrics")
+    col1, col2, col3, col4, col5, col6 = st.columns(6) 
+    col1.metric("Accuracy", f"{acc:.4f}")
+    col2.metric("AUC", f"{auc:.4f}")
+    col3.metric("Precision", f"{prec:.4f}")
+    col4.metric("Recall", f"{recall:.4f}")
+    col6.metric("F1_Score", f"{fc:.4f}")
+    col5.metric("MCC", f"{mcc:.4f}")
+    st.subheader("Confusion Matrix")
+    cm = confusion_matrix(y_true, y_pred)
+    fig, ax = plt.subplots()
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax)
+    ax.set_xlabel('Predicted')
+    ax.set_ylabel('Actual')
+    st.pyplot(fig)
+    st.subheader("Classification Report")
+    st.text(classification_report(y_true, y_pred))
