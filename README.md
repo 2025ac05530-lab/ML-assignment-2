@@ -4,6 +4,24 @@ Name: Shruti Basavaraj Desai
 BITS ID: 2025AC05530
 
 ## a. Problem Statement
+Given a credit card client's demographic profile, credit limit, six months of
+repayment status, six months of bill statement amounts and six months of payment
+amounts, predict whether that client will default on their payment next month.
+
+This is a binary classification problem framed from the lender's point of view.
+The practical use is early risk flagging: a client predicted to default can be
+routed to collections outreach, a credit limit review, or a restructured payment
+plan before the missed payment actually happens.
+
+The business cost is asymmetric. A false negative (a defaulter we fail to flag)
+means unrecovered debt, while a false positive (a paying client we flag) costs
+only some wasted outreach and a mildly annoyed customer. Because of this, and
+because only 22% of clients default, plain accuracy is a misleading score — a
+model that predicts "no default" for everyone already scores 77.88%. Recall,
+F1 and MCC are the metrics that actually separate the models here, with AUC used
+to judge the quality of the underlying probability ranking independent of the
+0.5 threshold.
+
 
 
 
