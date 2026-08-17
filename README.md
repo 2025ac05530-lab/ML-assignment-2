@@ -87,7 +87,7 @@ in the original dataset. Retained as-is rather than renamed.
   1 = graduate school, 2 = university, 3 = high school, 4 = others. The data also
   contains 0 (14 rows), 5 (280 rows) and 6 (51 rows), which are unlabelled.
   All three were folded into category 4 ("others"), 345 rows in total, taking
-  that category from 123 to 468 — about 1.6% of the dataset.
+  that category from 123 to 468 — about 1.15% of the dataset.
 - **Undocumented category code in `MARRIAGE`.** Defined values are 1 = married,
   2 = single, 3 = others; the data contains 54 rows coded 0. These were folded
   into category 3 ("others"), taking it from 323 to 377.
@@ -143,7 +143,7 @@ use of MCC, F1 and AUC instead of accuracy alone. It also has real data quality
 issues — undocumented category codes, negative bill amounts, extreme skew — that
 require deliberate cleaning choices rather than a straight read-and-fit.
 
-## c.GitHub Repository Link
+## c. GitHub Repository Link
 Git Hub URL- https://github.com/2025ac05530-lab/ML-assignment-2
 App URL - https://ml-assignment-2-ofmret7pezdyk8xmynthfu.streamlit.app/
 
@@ -171,6 +171,8 @@ every other column in the table.
 Best value in each column in bold. No model wins more than two columns, and the
 six metrics point at three different winners — which is the whole substance of
 section (e).
+
+**Note** : when I re-Ran this on BITS Virtual Lab environment with Python 3.12 reproduces all figures exactly except Random Forest accuracy, which shifts from 0.8150 to 0.8142 — a difference , caused by floating-point tie-breaking differences between CPU architectures during split selection. All conclusions are unaffected.
 
 **Hyperparameters:** Logistic Regression `max_iter=1000`; Decision Tree
 `max_depth=5`; kNN `n_neighbors=5`; Gaussian Naive Bayes at defaults; Random
