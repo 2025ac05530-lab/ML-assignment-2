@@ -144,7 +144,9 @@ issues — undocumented category codes, negative bill amounts, extreme skew — 
 require deliberate cleaning choices rather than a straight read-and-fit.
 
 ## c.GitHub Repository Link
-https://github.com/2025ac05530-lab/ML-assignment-2
+Git Hub URL- https://github.com/2025ac05530-lab/ML-assignment-2
+App URL - https://ml-assignment-2-ofmret7pezdyk8xmynthfu.streamlit.app/
+
 
 ## d. Models Used
 
